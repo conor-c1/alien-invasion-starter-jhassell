@@ -10,9 +10,15 @@ class Ship:
         self.screen_rect = ai_game.screen.get_rect()
         self.settings = ai_game.settings
 
-        self.image = pygame.image.load('images/ship.png')
-        self.rect = self.image.get_rect()
+        # Create a simple ship shape instead of loading an image.
+        self.image = pygame.Surface((60, 40), pygame.SRCALPHA)
+        pygame.draw.polygon(
+            self.image,
+            (0, 80, 220),
+            [(30, 0), (0, 40), (60, 40)]
+        )
 
+        self.rect = self.image.get_rect()
         self.rect.midbottom = self.screen_rect.midbottom
 
         self.x = float(self.rect.x)
